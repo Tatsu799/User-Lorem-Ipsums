@@ -3,14 +3,15 @@
 spl_autoload_extensions(".php");
 // spl_autoload_register();
 spl_autoload_register(function ($className) {
-  $classPath = str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
+  // $classPath = str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
+  $classPath = __DIR__ . '/../' . str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
   if (file_exists($classPath)) {
     require_once $classPath;
   }
 });
 
 // composerの依存関係のオートロード
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Helpers\RandomGenerator;
 
